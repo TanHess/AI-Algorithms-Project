@@ -22,14 +22,151 @@
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
     ></script>
-    <title>BMI-Calculator</title>
+    <title>Baseball Predictor</title>
   </head>
   <body>
-    <div class="form-control">
+    <div class="form-group">
     <h1 align="center">Hello user!</h1>
     <h3 align="center">This will be the baseball predictor app!<br></h2>
     </div>
     <div class="pt-5"></div>
+    <form class="container-fluid" action='' method="POST">
+      <div class="row">
+        <div class="col">
+          <h4 align="center">General Information</h4>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Balls</h5>
+              <input name='Balls' class="form-control" type="number" step="any">
+            </div>
+            <div class="col">
+              <h5 align="center">Strikes</h5>
+              <input name='strikes' class="form-control" type="number" step="any">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Runners on Base</h5>
+              <input name='runners' class="form-control" type="text">
+            </div>
+            <div class="col">
+              <h5 align="center">Inning</h5>
+              <input name='inning' class="form-control" type="number" step="any">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitches Thrown</h5>
+              <input name='pitches' class="form-control" type="number" step="any">
+            </div>
+            <div class="col">
+              <h5 align="center">Handedness of Batter</h5>
+              <select name='handed' class="form-control" id="handed">
+                <option value="none" selected disabled hidden>Select an option</option>
+                <option value="right">Right</option>
+                <option value="left">Left</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Batter Average</h5>
+              <input name='batteraverage' class="form-control" type="number" step="any">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <h4 align="center">Previous Pitch Information</h4>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitch Type</h5>
+              <select name="pitchtype5" class="form-control" id="pitchtype1">
+                <option value="none" selected disabled hidden>Select an Pitch</option>
+                <option value="curve">Curve Ball</option>
+                <option value="knuckle">Knuckle Ball</option>
+                <option value="fast">Fast Ball</option>
+                <option value="changeup">Changeup</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 align="center">Pitch Location (zone)</h5>
+              <input name='pitchzone1' class="form-control" type="number" step="any">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitch Type</h5>
+              <select name="pitchtype5" class="form-control" id="pitchtype2">
+                <option value="none" selected disabled hidden>Select an Pitch</option>
+                <option value="curve">Curve Ball</option>
+                <option value="knuckle">Knuckle Ball</option>
+                <option value="fast">Fast Ball</option>
+                <option value="changeup">Changeup</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 align="center">Pitch Location (zone)</h5>
+              <input name='pitchzone2' class="form-control" type="text">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitch Type</h5>
+              <select name="pitchtype5" class="form-control" id="pitchtype3">
+                <option value="none" selected disabled hidden>Select an Pitch</option>
+                <option value="curve">Curve Ball</option>
+                <option value="knuckle">Knuckle Ball</option>
+                <option value="fast">Fast Ball</option>
+                <option value="changeup">Changeup</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 align="center">Pitch Location (zone)</h5>
+              <input name='pitchzone3' class="form-control" type="text">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitch Type</h5>
+              <select name="pitchtype5" class="form-control" id="pitchtype4">
+                <option value="none" selected disabled hidden>Select an Pitch</option>
+                <option value="curve">Curve Ball</option>
+                <option value="knuckle">Knuckle Ball</option>
+                <option value="fast">Fast Ball</option>
+                <option value="changeup">Changeup</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 align="center">Pitch Location (zone)</h5>
+              <input name='pitchzone4' class="form-control" type="text">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5 align="center">Pitch Type</h5>
+              <select name="pitchtype5" class="form-control" id="pitchtype5">
+                <option value="none" selected disabled hidden>Select an Pitch</option>
+                <option value="curve">Curve Ball</option>
+                <option value="knuckle">Knuckle Ball</option>
+                <option value="fast">Fast Ball</option>
+                <option value="changeup">Changeup</option>
+              </select>
+            </div>
+            <div class="col">
+              <h5 align="center">Pitch Location (zone)</h5>
+              <input name='pitchzone5' class="form-control" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-2" align="center">
+        <button type="submit" class="btn btn-primary">Predict the Pitch!</button>
+      </div>
+    </div>
+    </form>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
