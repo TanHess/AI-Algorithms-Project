@@ -26,138 +26,139 @@
   </head>
   <body>
     <div class="form-group">
-    <h1 align="center">Hello user!</h1>
-    <h3 align="center">This will be the baseball predictor app!<br></h2>
+      <h1 align="center">Hello user!</h1>
+      <h3 align="center">This will be the baseball predictor app!<br></h2>
     </div>
     <div class="pt-5"></div>
     <form class="container-fluid" action='' method="POST">
       <div class="row">
         <div class="col">
           <h4 align="center">General Information</h4>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Balls</h6>
-              <input name='Balls' class="form-control" type="number" step="any">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Balls</h6>
+                <input name='balls' class="form-control" min="0" max="3" type="number" step="1" required>
+              </div>
+              <div class="col">
+                <h6 align="center">Strikes</h6>
+                <input name='strikes' class="form-control" min="0" max="2" type="number" step="1" required>
+              </div>
             </div>
-            <div class="col">
-              <h6 align="center">Strikes</h6>
-              <input name='strikes' class="form-control" type="number" step="any">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Handedness of Batter</h6>
+                <select name='handedness' class="form-control" id="handed">
+                  <option value="right" selected>Right</option>
+                  <option value="left">Left</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Score Deficit</h6>
+                <input name='score' class="form-control" type="number" step="1" required>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
+            <div class="col-xs-12" style="height:20px;"></div>
+            <div class="row">
               <h6 align="center">Runners on Base</h6>
-              <input name='runners' class="form-control" type="text">
-            </div>
-            <div class="col">
-              <h6 align="center">Inning</h6>
-              <input name='inning' class="form-control" type="number" step="any">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitches Thrown</h6>
-              <input name='pitches' class="form-control" type="number" step="any">
-            </div>
-            <div class="col">
-              <h6 align="center">Handedness of Batter</h6>
-              <select name='handed' class="form-control" id="handed">
-                <option value="none" selected disabled hidden>Select an option</option>
-                <option value="right">Right</option>
-                <option value="left">Left</option>
-              </select>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Batter Average</h6>
-              <input name='batteraverage' class="form-control" type="number" step="any">
+              <div class="col">
+                <label class="form-check-label" for="base2">
+                  First Base
+                </label>
+                <input class="form-check-input" type="checkbox" name="base1" id="base1">
+              </div>
+              <div class="col">
+                <label class="form-check-label" for="base2">
+                  Second Base
+                </label>
+                <input class="form-check-input" type="checkbox" name="base2" id="base2">
+              </div>
+              <div class="col">
+                <label class="form-check-label" for="base3">
+                  Third Base
+                </label>
+                <input class="form-check-input" type="checkbox" name="base3" id="base3">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col">
-        <h4 align="center">Previous Pitch Information</h4>
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitch Type</h6>
-              <select name="pitchtype5" class="form-control" id="pitchtype1">
-                <option value="none" selected disabled hidden>Select an Pitch</option>
-                <option value="curve">Curve Ball</option>
-                <option value="knuckle">Knuckle Ball</option>
-                <option value="fast">Fast Ball</option>
-                <option value="changeup">Changeup</option>
-              </select>
+        <div class="col">
+          <h4 align="center">Previous Pitch Information</h4>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Pitch Type</h6>
+                <select name="pitchtype1" class="form-control" id="pitchtype1">
+                  <option value="curve">Curve Ball</option>
+                  <option value="knuckle">Knuckle Ball</option>
+                  <option value="fast" selected>Fast Ball</option>
+                  <option value="changeup">Changeup</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Pitch Location (zone)</h6>
+                <input name='pitchzone1' class="form-control" type="number" min="1" max="14" step="1" required>
+              </div>
             </div>
-            <div class="col">
-              <h6 align="center">Pitch Location (zone)</h6>
-              <input name='pitchzone1' class="form-control" type="number" step="any">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Pitch Type</h6>
+                <select name="pitchtype2" class="form-control" id="pitchtype2">
+                  <option value="curve">Curve Ball</option>
+                  <option value="knuckle">Knuckle Ball</option>
+                  <option value="fast" selected>Fast Ball</option>
+                  <option value="changeup">Changeup</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Pitch Location (zone)</h6>
+                <input name='pitchzone2' class="form-control" type="number" min="1" max="14" step="1" required>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitch Type</h6>
-              <select name="pitchtype5" class="form-control" id="pitchtype2">
-                <option value="none" selected disabled hidden>Select an Pitch</option>
-                <option value="curve">Curve Ball</option>
-                <option value="knuckle">Knuckle Ball</option>
-                <option value="fast">Fast Ball</option>
-                <option value="changeup">Changeup</option>
-              </select>
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Pitch Type</h6>
+                <select name="pitchtype3" class="form-control" id="pitchtype3">
+                  <option value="curve">Curve Ball</option>
+                  <option value="knuckle">Knuckle Ball</option>
+                  <option value="fast" fast>Fast Ball</option>
+                  <option value="changeup">Changeup</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Pitch Location (zone)</h6>
+                <input name='pitchzone3' class="form-control" type="number" min="1" max="14" step="1" required>
+              </div>
             </div>
-            <div class="col">
-              <h6 align="center">Pitch Location (zone)</h6>
-              <input name='pitchzone2' class="form-control" type="text">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Pitch Type</h6>
+                <select name="pitchtype4" class="form-control" id="pitchtype4">
+                  <option value="curve">Curve Ball</option>
+                  <option value="knuckle">Knuckle Ball</option>
+                  <option value="fast" selected>Fast Ball</option>
+                  <option value="changeup">Changeup</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Pitch Location (zone)</h6>
+                <input name='pitchzone4' class="form-control" type="number" min="1" max="14" step="1" required>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitch Type</h6>
-              <select name="pitchtype5" class="form-control" id="pitchtype3">
-                <option value="none" selected disabled hidden>Select an Pitch</option>
-                <option value="curve">Curve Ball</option>
-                <option value="knuckle">Knuckle Ball</option>
-                <option value="fast">Fast Ball</option>
-                <option value="changeup">Changeup</option>
-              </select>
-            </div>
-            <div class="col">
-              <h6 align="center">Pitch Location (zone)</h6>
-              <input name='pitchzone3' class="form-control" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitch Type</h6>
-              <select name="pitchtype5" class="form-control" id="pitchtype4">
-                <option value="none" selected disabled hidden>Select an Pitch</option>
-                <option value="curve">Curve Ball</option>
-                <option value="knuckle">Knuckle Ball</option>
-                <option value="fast">Fast Ball</option>
-                <option value="changeup">Changeup</option>
-              </select>
-            </div>
-            <div class="col">
-              <h6 align="center">Pitch Location (zone)</h6>
-              <input name='pitchzone4' class="form-control" type="text">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 align="center">Pitch Type</h6>
-              <select name="pitchtype5" class="form-control" id="pitchtype5">
-                <option value="none" selected disabled hidden>Select an Pitch</option>
-                <option value="curve">Curve Ball</option>
-                <option value="knuckle">Knuckle Ball</option>
-                <option value="fast">Fast Ball</option>
-                <option value="changeup">Changeup</option>
-              </select>
-            </div>
-            <div class="col">
-              <h6 align="center">Pitch Location (zone)</h6>
-              <input name='pitchzone5' class="form-control" type="text">
+            <div class="row">
+              <div class="col">
+                <h6 align="center">Pitch Type</h6>
+                <select name="pitchtype5" class="form-control" id="pitchtype5">
+                  <option value="curve">Curve Ball</option>
+                  <option value="knuckle">Knuckle Ball</option>
+                  <option value="fast" selected>Fast Ball</option>
+                  <option value="changeup">Changeup</option>
+                </select>
+              </div>
+              <div class="col">
+                <h6 align="center">Pitch Location (zone)</h6>
+                <input name='pitchzone5' class="form-control" type="number" min="1" max="14" step="1" required>
+              </div>
             </div>
           </div>
         </div>
@@ -165,6 +166,13 @@
       <div class="pt-2" align="center">
         <button type="submit" class="btn btn-primary">Predict the Pitch!</button>
       </div>
+    </div>
+    <div>
+      <div class="col-xs-12" style="height:40px;"></div>
+      {% if predict == True %}
+      <H4 align="center">Your Prediction is:</H4>
+      <h6 align="center">{{prediction}}</h6>
+      {% endif %}
     </div>
     </form>
     <script
