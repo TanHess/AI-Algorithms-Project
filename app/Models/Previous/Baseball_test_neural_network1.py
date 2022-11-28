@@ -19,6 +19,32 @@ from pybaseball import statcast_pitcher
 #from pybaseball import playerid_lookup
 
 
+# FF is fastball    1
+# SL is slider      2
+# FS is splitter    3
+# SI is sinker      4
+# CH is changeup    5
+# CU is curve       6
+
+'''Dictionaries to hold numerical representations of baseball data:'''
+# Pitch codes and their integer representation
+possible_pitches = {
+    'FF' : int(1),
+    'SL' : int(2),
+    'FS' : int(3),
+    'SI' : int(4),
+    'CH' : int(5),
+    'CU' : int(6)
+}
+
+# Left or right handed
+possible_handedness = {
+    'L' : int(0),
+    'R' : int(1)
+}
+
+# Bases
+
 # In[89]:
 '''
 df_baseball = statcast_pitcher('2008-04-01','2022-11-18', player_id=playerid_lookup('Verlander','Justin'))
@@ -64,18 +90,28 @@ df_baseball.apply(pd.to_numeric, errors='ignore')
 # 0 for left handed
 
 # df.loc[df["gender"] == "male", "gender"] = 1
-df_baseball.loc[df_baseball['pitch_type'] == "FF", "pitch_type"] = 1
+'''df_baseball.loc[df_baseball['pitch_type'] == "FF", "pitch_type"] = 1
 df_baseball.loc[df_baseball['pitch_type'] == "SL", "pitch_type"] = 2
 df_baseball.loc[df_baseball['pitch_type'] == "FS", "pitch_type"] = 3
 df_baseball.loc[df_baseball['pitch_type'] == "SI", "pitch_type"] = 4
-df_baseball.loc[df_baseball['pitch_type'] == "CH", "pitch_type"] = 5
+df_baseball.loc[df_baseball['pitch_type'] == "CH", "pitch_type"] = 5'''
+
+# Replaces above code
+for k,v in possible_pitches.items():
+    df_baseball.replace(k,v,inplace=True)
 
 df_baseball.loc[df_baseball['on_1b'] > 0, "on_1b"] = int(1)
 df_baseball.loc[df_baseball['on_2b'] > 0, "on_2b"] = int(1)
 df_baseball.loc[df_baseball['on_3b'] > 0, "on_3b"] = int(1)
 
+'''
 df_baseball.loc[df_baseball['stand'] == "R", "stand"] = int(1)
 df_baseball.loc[df_baseball['stand'] == "L", "stand"] = int(0)
+'''
+
+# Replaces above code
+for k,v in possible_handedness.items():
+    df_baseball.replace(k,v,inplace=True)
 
 #df_baseball.to_csv("updatedBaseball.csv", index=False)
 df_baseball['pitch_type'].astype(str)
@@ -87,8 +123,8 @@ df_baseball.head(40)
 
 
 #df_baseball = pd.get_dummies(df_baseball)
-df_baseball.head(40)
-
+print(df_baseball.head(40))
+print(df_baseball.on_1b.unique(),df_baseball.on_2b.unique(),df_baseball.on_3b.unique())
 
 # In[95]:
 

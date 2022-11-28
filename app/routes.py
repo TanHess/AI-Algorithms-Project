@@ -1,4 +1,13 @@
 from flask import render_template, request, flash, redirect, url_for, Blueprint, current_app
+import tensorflow as tf
+import numpy as np
+
+    
+    
+with open("Models/Baseball_ohtani.py") as file:
+    print(file.read())
+    
+model = tf.saved_model.load('Desktop/School/Fall2022/ArtificialIntelligence/SemesterProject/AI-Algorithms-Project/app/Model/Ohtani')
 
 view = Blueprint('view',__name__)
 
