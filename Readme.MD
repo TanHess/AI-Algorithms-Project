@@ -14,10 +14,5 @@ After ensuring python and pip are installed, follow these step-by-step instructi
 7.	Use either the command line or an IDE with a command line to navigate to the project directory.
 8.	Once in the project directory within the command line, run the command “pip install -r  requirements.txt” 
 9.	After installing the dependencies, run the command “python main.py” to run the web application.
-a.	Travel to localhost:5000 (127.0.0.1:5000) in a browser to view the web application.
-b.	To stop the application, use the terminal you started it from and simultaneously press “control-c”
-10.	To run the unit tests along with the coverage report, run these commands:
-a.	Coverage run -m pytest tests
-b.	Coverage report 
-c.	Coverage html (makes an html file for easier viewing located at htmlcov/index.html)
-11.	To view the coverage report in html, use “cd htmlcov” in your terminal, and then use “open index.html”.
+- a.	Travel to localhost:5000 (127.0.0.1:5000) in a browser to view the web application.
+- b.	To stop the application, use the terminal you started it from and simultaneously press “control-c”
