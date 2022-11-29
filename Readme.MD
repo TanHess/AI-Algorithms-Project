@@ -14,5 +14,5 @@ After ensuring python and pip are installed, follow these step-by-step instructi
 7.	Use either the command line or an IDE with a command line to navigate to the project directory.
 8.	Once in the project directory within the command line, run the command “pip install -r  requirements.txt” 
 9.	After installing the dependencies, run the command “python main.py” to run the web application.
-- a.	Travel to localhost:5000 (127.0.0.1:5000) in a browser to view the web application.
-- b.	To stop the application, use the terminal you started it from and simultaneously press “control-c”
+    - Travel to localhost:5000 (127.0.0.1:5000) in a browser to view the web application.
+    - To stop the application, use the terminal you started it from and simultaneously press “control-c”
