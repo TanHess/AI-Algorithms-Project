@@ -25,7 +25,7 @@ def get_largest_changes(base_odds, prediction_odds):
 
 @view.route('/',methods=['GET','POST'])
 def index():
-    
+    player = "Shohei Ohtani"
     # Get the average stats for the pitcher: 
     csv_path = os.path.join(os.getcwd(), "app", "Models", "savant_ohtani.csv")
     df = pd.read_csv(csv_path)
@@ -122,4 +122,4 @@ def index():
         # If no errors up until this point, set predict=True to display results:
         predict = True
     
-    return render_template('base.html',predict=predict, message=message, data=data, message2=message2)
+    return render_template('base.html',predict=predict, player=player, message=message, data=data, message2=message2)
