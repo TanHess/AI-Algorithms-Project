@@ -38,11 +38,11 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col">
-                <h6 align="center">Balls</h6>
+                <h6 align="center" title="Current number of balls for this at-bat">Balls</h6>
                 <input name='balls' class="form-control" min="0" max="3" type="number" step="1" required>
               </div>
               <div class="col">
-                <h6 align="center">Strikes</h6>
+                <h6 align="center" title="Current number of strikes for this at-bat">Strikes</h6>
                 <input name='strikes' class="form-control" min="0" max="2" type="number" step="1" required>
               </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="col-xs-12" style="height:20px;"></div>
             <div class="row">
               <div class="col">
-                <h6 align="center">Handedness of Batter</h6>
+                <h6 align="center" title="Whether the batter is Right or Left Handed">Handedness of Batter</h6>
                 <select name='handedness' class="form-control" id="handed">
                   <option value="right" selected>Right</option>
                   <option value="left">Left</option>
@@ -108,7 +108,7 @@
               </div>
               <div class="col">
                 <div class="row">
-                  <h6 align="center">Runners on Base</h6>
+                  <h6 align="center" title="Check the box if a runner is on a given base">Runners on Base</h6>
                   <div class="col">
                     <label class="form-check-label" for="base1">
                       First Base
