@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[323]:
 
 
 from keras.models import Sequential
@@ -18,29 +17,29 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 
 
-# In[324]:
+
+pitch_types = {
+    'SL' : 'Slider',
+    'CH' : 'Changeup',
+    'CU' : 'Curveball',
+    'FF' : 'Fastball',
+    'FC' : 'Cutter',
+    'SI' : 'Sinker',
+    'FS' : 'Splitter'
+}
 
 
 df = pd.read_csv("savant_ohtani.csv")
 df.head()
 
 
-# In[325]:
-
-
-pitches = ["FF", "SL", "FS", "SI", "CH", "CU"]
+pitches = ["FF", "SL", "FS", "SI", "CH", "CU", 'FC']
 df = df[df.pitch_type.isin(pitches) == True]
 df.fillna(0, inplace=True)
 df
 
 
-# In[326]:
-
-
 df.apply(pd.to_numeric, errors='ignore')
-
-
-# In[327]:
 
 
 # FF is fastball    1
@@ -54,7 +53,6 @@ df.apply(pd.to_numeric, errors='ignore')
 # 1 for right handed
 # 0 for left handed
 
-# df.loc[df["gender"] == "male", "gender"] = 1
 df.loc[df['pitch_type'] == "FF", "pitch_type"] = 1
 df.loc[df['pitch_type'] == "SL", "pitch_type"] = 2
 df.loc[df['pitch_type'] == "FS", "pitch_type"] = 3
@@ -105,38 +103,19 @@ type(df['pitch_type'])
 df.head(40)
 
 
-# In[328]:
-
-
 print(df.pitch_type.unique())
-
-
-# In[329]:
 
 
 from sklearn.model_selection import train_test_split
 X=df.drop('pitch_type', axis=1)  # Features
 X.drop('Unnamed: 0', axis=1, inplace=True)
 X.drop('events', axis=1, inplace=True)
-#X.drop('game_type', axis=1, inplace=True)
-#X.drop('description', axis=1, inplace=True) # comment out if description is needed
-#X.drop('outs_when_up', axis=1, inplace=True)
-#X.drop('bat_score', axis=1, inplace=True)
-#X.drop('fld_score', axis=1, inplace=True)
 
-#X.drop('zone', axis=1)
 y=df.pitch_type  # Labels
-#y.insert(3, "zone", df_baseball.zone, True)
-#y["zone"] = df_baseball.zone
 
 
 X.drop('zone', axis=1, inplace=True)
-# Split dataset into training set and test set
-#X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
 X.head()
-
-
-# In[330]:
 
 
 col_list = list(X.columns)
@@ -146,27 +125,14 @@ X = X[col_list]
 X
 
 
-# In[331]:
-
-
 y = pd.get_dummies(y)
-y
-
-
-# In[332]:
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3) # 70% training and 30% test
 
 
-# In[333]:
-
-
 y_test = pd.get_dummies(y_test)
-y_test
 
-
-# In[334]:
 
 
 X_train = np.asarray(X_train).astype('float32')
@@ -175,19 +141,11 @@ X_test = np.asarray(X_test).astype('float32')
 y_train = np.array(y_train).astype('float32')
 y_test = np.array(y_test).astype('float32')
 
-
-# In[335]:
-
-
 # collects the loss and accuracy history to plot in a graph
 loss_history = []
 acc_history = []
 
 
-# In[336]:
-
-
-# model 2 from https://github.com/ShafinH/Pitch-Prediction/blob/master/04_neural_net.ipynb
 # creating the model
 model = Sequential()
 model.add(Dense(128, input_shape=(len(X.columns),), activation='tanh'))
@@ -203,10 +161,7 @@ model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.001,momentum=0.9
               metrics=['accuracy'])
 
 
-# In[ ]:
-
-
-hist = model.fit(X_train, y_train,epochs=210, batch_size=5, verbose=1)
+hist = model.fit(X_train, y_train,epochs=165, batch_size=5, verbose=1)
 for i in range(len(hist.history['accuracy'])):
     acc_history.append(hist.history['accuracy'][i])
     
@@ -216,17 +171,11 @@ for i in range(len(hist.history['loss'])):
 y_pred = model.predict(X_test)
 
 
-# In[ ]:
-
-
 plt.figure(figsize=(8,8))
 plt.plot(loss_history,label='training_loss')
 plt.xlabel('epoch')
 plt.ylabel('loss')
 plt.legend()
-
-
-# In[ ]:
 
 
 plt.figure(figsize=(8,8))
@@ -236,24 +185,15 @@ plt.ylabel('accuracy')
 plt.legend()
 
 
-# In[ ]:
-
-
 score = model.evaluate(X_test, y_test,verbose=1)
 print(score)
 
 
-# In[ ]:
-
-
 def plottingNames(resultList):
-    pitches = ["fastball", "slider", "splitter", "sinker", "cutter"]
+    pitches = ["fastball", "slider", "splitter", "sinker", "curveball", "cutter"]
     plt.figure(figsize=(10,10))
     plt.barh(pitches, resultList)
     plt.show()
-
-
-# In[ ]:
 
 
 from random import randint
@@ -286,6 +226,7 @@ inputData = np.array(inputData).astype('float32')
 score = model.predict(inputData)
 result = score.tolist()
 
+print(result[0])
 plottingNames(result[0])
 
     

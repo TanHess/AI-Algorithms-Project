@@ -33,7 +33,7 @@
     <form class="container-fluid" action='' method="POST">
       <div class="row">
         <div class="col">
-          <h4 align="center">General Information</h4>
+          <h4 align="center">Current Game Standings</h4>
           <div class="container-fluid">
             <div class="row">
               <div class="col">
@@ -45,6 +45,58 @@
                 <input name='strikes' class="form-control" min="0" max="2" type="number" step="1" required>
               </div>
             </div>
+            <div class="col-xs-12" style="height:20px;"></div>
+            <div class="row">
+              <div class="col">
+                <h6 align="center" title="Current number of outs">Outs</h6>
+                <input name='outs' class="form-control" min="0" max="2" type="number" step="1" required>
+              </div>
+              <div class="col">
+                <h6 align="center" title="Last pitches outcome">Outcome of Last Pitch</h6>
+                <select name='prev_desc' class="form-control" id="prev_desc">
+                  <option value="force_out">Force Out</option>
+                  <option value="called_strike">Called Strike</option>
+                  <option value="swinging_strike">Swinging Strike</option>
+                  <option value="ball" selected>Ball</option>
+                  <option value="strikeout">Strikout</option>
+                  <option value="foul">Foul</option>
+                  <option value="field_out">Field Out</option>
+                  <option value="walk">Walk</option>
+                  <option value="single">Single</option>
+                  <option value="hit_by_pitch">Pitch Hit Batter</option>
+                  <option value="double">Double</option>
+                  <option value="foul_tip">Foul Tip</option>
+                  <option value="sac_fly">Sacrifice Fly</option>
+                  <option value="blocked_ball">Blocked Ball</option>
+                  <option value="grounded_into_double_play">Ground Ball Into Double Play</option>
+                  <option value="double_play">Double Play</option>
+                  <option value="triple">Triple</option>
+                  <option value="caught_stealing_2b">Caught Stealing Base</option>
+                  <option value="home_run">Home Run</option>
+                  <option value="field_error">Field Error</option>
+                  <option value="foul_bunt">Fouled Bunt</option>
+                  <option value="other_out">Out (Other)</option>
+                  <option value="swinging_strike_blocked">Swinging Strike Blocked</option>
+                  <option value="sac_bunt">Sacrifice Bunt</option>
+                  <option value="missed_bunt">Missed Bunt</option>
+                  <option value="strikout_double_play">Strikout and Double Play</option>
+                  <option value="fielders_choice_out">Fielder's Choice Out</option>
+                  <option value="catcher_interf">Catcher Interference</option>
+                  <option value="hit_into_play">Hit Into Play</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h6 align="center" title="Pitcher's team's score">Pitching Team's Score</h6>
+                <input name='pitchscore' class="form-control" min="0" type="number" step="1" required>
+              </div>
+              <div class="col">
+                <h6 align="center" title="Opposing Team to the Pitcher">Batting Team's Score</h6>
+                <input name='batscore' class="form-control" min="0" type="number" step="1" required>
+              </div>
+            </div>
+            <div class="col-xs-12" style="height:20px;"></div>
             <div class="row">
               <div class="col">
                 <h6 align="center">Handedness of Batter</h6>
@@ -54,115 +106,33 @@
                 </select>
               </div>
               <div class="col">
-                <h6 align="center" title="Differnce in score from the pitcher's team's perspective.">Score Deficit</h6>
-                <input name='score' class="form-control" type="number" step="1" required>
-              </div>
-            </div>
-            <div class="col-xs-12" style="height:20px;"></div>
-            <div class="row">
-              <h6 align="center">Runners on Base</h6>
-              <div class="col">
-                <label class="form-check-label" for="base2">
-                  First Base
-                </label>
-                <input class="form-check-input" type="checkbox" name="base1" id="base1">
-              </div>
-              <div class="col">
-                <label class="form-check-label" for="base2">
-                  Second Base
-                </label>
-                <input class="form-check-input" type="checkbox" name="base2" id="base2">
-              </div>
-              <div class="col">
-                <label class="form-check-label" for="base3">
-                  Third Base
-                </label>
-                <input class="form-check-input" type="checkbox" name="base3" id="base3">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <h4 align="center">Previous Pitch Information</h4>
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col">
-                <h6 align="center">Pitch Type</h6>
-                <select name="pitchtype1" class="form-control" id="pitchtype1">
-                  <option value="curve">Curve Ball</option>
-                  <option value="knuckle">Knuckle Ball</option>
-                  <option value="fast" selected>Fast Ball</option>
-                  <option value="changeup">Changeup</option>
-                </select>
-              </div>
-              <div class="col">
-                <h6 align="center">Pitch Location (zone)</h6>
-                <input name='pitchzone1' class="form-control" type="number" min="1" max="14" step="1" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h6 align="center">Pitch Type</h6>
-                <select name="pitchtype2" class="form-control" id="pitchtype2">
-                  <option value="curve">Curve Ball</option>
-                  <option value="knuckle">Knuckle Ball</option>
-                  <option value="fast" selected>Fast Ball</option>
-                  <option value="changeup">Changeup</option>
-                </select>
-              </div>
-              <div class="col">
-                <h6 align="center">Pitch Location (zone)</h6>
-                <input name='pitchzone2' class="form-control" type="number" min="1" max="14" step="1" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h6 align="center">Pitch Type</h6>
-                <select name="pitchtype3" class="form-control" id="pitchtype3">
-                  <option value="curve">Curve Ball</option>
-                  <option value="knuckle">Knuckle Ball</option>
-                  <option value="fast" fast>Fast Ball</option>
-                  <option value="changeup">Changeup</option>
-                </select>
-              </div>
-              <div class="col">
-                <h6 align="center">Pitch Location (zone)</h6>
-                <input name='pitchzone3' class="form-control" type="number" min="1" max="14" step="1" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h6 align="center">Pitch Type</h6>
-                <select name="pitchtype4" class="form-control" id="pitchtype4">
-                  <option value="curve">Curve Ball</option>
-                  <option value="knuckle">Knuckle Ball</option>
-                  <option value="fast" selected>Fast Ball</option>
-                  <option value="changeup">Changeup</option>
-                </select>
-              </div>
-              <div class="col">
-                <h6 align="center">Pitch Location (zone)</h6>
-                <input name='pitchzone4' class="form-control" type="number" min="1" max="14" step="1" required>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <h6 align="center">Pitch Type</h6>
-                <select name="pitchtype5" class="form-control" id="pitchtype5">
-                  <option value="curve">Curve Ball</option>
-                  <option value="knuckle">Knuckle Ball</option>
-                  <option value="fast" selected>Fast Ball</option>
-                  <option value="changeup">Changeup</option>
-                </select>
-              </div>
-              <div class="col">
-                <h6 align="center">Pitch Location (zone)</h6>
-                <input name='pitchzone5' class="form-control" type="number" min="1" max="14" step="1" required>
+                <div class="row">
+                  <h6 align="center">Runners on Base</h6>
+                  <div class="col">
+                    <label class="form-check-label" for="base1">
+                      First Base
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="base1" id="base1">
+                  </div>
+                  <div class="col">
+                    <label class="form-check-label" for="base2">
+                      Second Base
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="base2" id="base2">
+                  </div>
+                  <div class="col">
+                    <label class="form-check-label" for="base3">
+                      Third Base
+                    </label>
+                    <input class="form-check-input" type="checkbox" name="base3" id="base3">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div class="col-xs-12" style="height:20px;"></div>
       <div class="pt-2" align="center">
         <button type="submit" class="btn btn-primary">Predict the Pitch!</button>
       </div>
@@ -171,7 +141,9 @@
       <div class="col-xs-12" style="height:40px;"></div>
       {% if predict == True %}
       <H4 align="center">Your Prediction is:</H4>
-      <h6 align="center">{{prediction}}</h6>
+      <H5 align="center">{{ message }}</H5>
+      <H5 align="center">{{ message2 | safe}}</H5>
+      <img class="rounded mx-auto d-block" src='data:image/png;base64,{{data}}'/>
       {% endif %}
     </div>
     </form>
