@@ -13,7 +13,7 @@ from keras.models import Sequential
 from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
 import seaborn as sns
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import tensorflow as tf
 from pybaseball import statcast_pitcher
 #from pybaseball import playerid_lookup
@@ -201,7 +201,7 @@ model.compile(loss='binary_crossentropy',
               optimizer=sgd,
               metrics=['accuracy'])
 
-model.fit(X_train, y_train, epochs = 10,
+hist = model.fit(X_train, y_train, epochs = 10,
             batch_size = 1)
 
 
@@ -227,10 +227,6 @@ model.compile(optimizer=tf.keras.optimizers.SGD(learning_rate=0.01,momentum=0.9)
               metrics=['accuracy'])
 
 
-# In[105]:
-
-
-model.fit(X_train, y_train,epochs=4, batch_size=1, verbose=1)
 
 y_pred = model.predict(X_test)
 
@@ -262,8 +258,29 @@ print(score)
 
 
 
-# In[ ]:
+# collects the loss and accuracy history to plot in a graph
+loss_history = []
+acc_history = []
 
 
+for i in range(len(hist.history['accuracy'])):
+    acc_history.append(hist.history['accuracy'][i])
+    
+for i in range(len(hist.history['loss'])):
+    loss_history.append(hist.history['loss'][i])
 
+plt.figure(figsize=(8,8))
+plt.plot(loss_history,label='training_loss')
+plt.xlabel('epoch')
+plt.ylabel('loss')
+plt.legend()
+
+
+plt.figure(figsize=(8,8))
+plt.plot(acc_history,label='training_accuracy')
+plt.xlabel('epoch')
+plt.ylabel('accuracy')
+plt.legend()
+
+plt.show()
 

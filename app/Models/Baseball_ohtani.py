@@ -169,8 +169,6 @@ for i in range(len(hist.history['loss'])):
     loss_history.append(hist.history['loss'][i])
 
 y_pred = model.predict(X_test)
-
-
 plt.figure(figsize=(8,8))
 plt.plot(loss_history,label='training_loss')
 plt.xlabel('epoch')
